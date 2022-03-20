@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.21)
+project(dsa)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(dsa main.cpp LinkedList.cpp CircularLinkedList.cpp DoublyLinkedList.cpp ListSTL.cpp StackFromArray.cpp StackFromList.cpp CompilerInfo.cpp StackSTL.cpp ParenthesisMatching.cpp InfixToPostfix.cpp QueueFromArray.cpp QueueFromList.cpp)
+
+add_executable(string string.cpp)
+add_executable(linkedList LinkedList.cpp)
+add_executable(LinkedList LinkedList.cpp)
+add_executable(CircularLinkedList CircularLinkedList.cpp)
+add_executable(DoublyLinkedList DoublyLinkedList.cpp)
+add_executable(ListSTL ListSTL.cpp)
+add_executable(StackFromArray StackFromArray.cpp)
+add_executable(StackFromList StackFromList.cpp)
+add_executable(StackSTL StackSTL.cpp)
+add_executable(ParenthesisMatching ParenthesisMatching.cpp)
+add_executable(InfixToPostfix InfixToPostfix.cpp)
+add_executable(Queue QueueFromArray.cpp)
+add_executable(QueueFromList QueueFromList.cpp)
+add_executable(QueueFromArray QueueFromArray.cpp)
