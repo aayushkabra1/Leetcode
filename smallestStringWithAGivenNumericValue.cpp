@@ -8,8 +8,9 @@ public:
         int index = n - 1;
         k -= n;
         while(k > 0) {
-            ans[index] = (char)(ans[index] + 1);
-            k--;
+            int temp = min('z' - ans[index], k);
+            k -= temp;
+            ans[index] = (char) (ans[index] + temp);
             if (ans[index] == 'z') index--;
         }
         return ans;
