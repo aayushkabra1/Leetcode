@@ -13,10 +13,10 @@ using namespace std;
 //         vector<int> newMatrix(n*m, 0);
 //         for (int q = 0; q < n; q++) {
 //             for (int t = 0; t < m; t++) {
-//                 newMatrix[q * m + t] = matrix[q][t];
+//                 if (matrix[q][t] == target) return true;
 //             }
 //         }
-//         return binary_search(newMatrix.begin(), newMatrix.end(), target);
+//         return false;
 //     }
 // };
 
