@@ -1,24 +1,31 @@
 #include <iostream>
 #include <vector>
 #include <stack>
+#include <cmath>
 using namespace std;
 
 class Solution {
 public:
     int scoreOfParentheses(string s) {
-        int score = 0;
-        for (int i = 0; i < s.size(); i++) {
-            if (s[i] == '(') {
-                score++;
+        int depth = 0, ans = 0;
+        char prev = '(';
+        for (char c : s) {
+            if (c == '(') depth++;
+            else {
+                depth--;
+                if (prev == '(') {
+                    ans += pow(2, depth);
+                }
             }
+            prev = c;
         }
-        return score;
-    }
+        return ans;
+    }   
 };
 
 int main(int argc, char const *argv[])
 {
     Solution s;
-    cout << s.scoreOfParentheses("()()");
+    cout << s.scoreOfParentheses("(())");
     return 0;
 }
