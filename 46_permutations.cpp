@@ -28,3 +28,28 @@ using namespace std;
 //         return ans;
 //     }
 // };
+
+class Solution {
+public:
+    vector<vector<int>> ans;
+
+    void helper(vector<int> &nums, int i) {
+        int n = nums.size();
+        if (i == nums.size()) {
+            ans.push_back(nums);
+            return;
+        }
+
+        for (int j = i; i  < n; i++) {
+            swap(nums[i], nums[j]);
+            helper(nums, j + 1);
+            swap(nums[i], nums[j]);
+        }
+    }
+
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<int> temp_ans;
+        helper(nums, 0);
+        return ans;
+    }
+};
