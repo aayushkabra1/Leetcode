@@ -3,12 +3,7 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    map<int, int> mp;
-    mp[1]++;
-    mp[2]--;
-    mp.erase(1);
-    cout << mp.empty();
-    cout << mp[2];
+    cout << (-1 % 5);
     return 0;
 }
 
