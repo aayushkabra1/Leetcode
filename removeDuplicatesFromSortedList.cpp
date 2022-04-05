@@ -13,25 +13,18 @@ struct ListNode {
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        if (head == nullptr || head->next == nullptr) return head;
-
-        ListNode *prev = new ListNode(-101);
-        prev->next = head;
-        ListNode *curr = prev;
-
-        while(curr->next && curr->next->next) {
-            if (curr->next->val == curr->next->next->val){
-                ListNode *temp = curr->next->next;
-                while(temp && curr->next->val == temp->val) {
-                    ListNode *del = temp;
-                    temp = temp->next;
-                    delete(del);   
-                }
-                curr->next = temp;
-            } else {
+        ListNode *curr = head, *prev = nullptr;
+        while(curr) {
+            if (prev && curr->val == prev->val) {
+                prev->next = curr->next;
+                curr->next = nullptr;
+                curr = prev->next;
+            }
+            else {
+                prev = curr;
                 curr = curr->next;
             }
         }
-        return prev->next;
+        return head;
     }
 };
