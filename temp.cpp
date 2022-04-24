@@ -4,9 +4,10 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    priority_queue<int> pq;
-    pq.push(1); pq.push(2);
-    cout << pq.top();
+    unordered_map<int, int> mp1, mp2;
+    mp1[1] = 1;
+    mp2[1] = 1;
+    cout << (mp1 == mp2);
     return 0;
 }
 
