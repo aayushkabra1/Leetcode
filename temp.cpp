@@ -4,10 +4,8 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    unordered_map<int, int> mp1, mp2;
-    mp1[1] = 1;
-    mp2[1] = 1;
-    cout << (mp1 == mp2);
+    vector<int> v = {1, 2, 3 ,4, 5};
+    
     return 0;
 }
 
