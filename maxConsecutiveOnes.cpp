@@ -4,17 +4,15 @@ using namespace std;
 
 class Solution {
 public:
-    int longestOnes(vector<int>& nums, int k) {
-        int zeroCount = 0, ans = 0, i = 0;
-        for (int j = 0; j < nums.size(); j++) {
-            if (nums[j] == 0) zeroCount++;
-            while(zeroCount > k) {
-                if (nums[i] == 0) zeroCount--;
-                i++;
-            }
-            ans = max(ans, j - i + 1);
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int max_ = -1;
+        int maxTillNow = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] == 1) maxTillNow++;
+            else maxTillNow = 0;
+            max_ = max(max_, maxTillNow);            
         }
-        return ans;
+        return max_;
     }
 };
 
