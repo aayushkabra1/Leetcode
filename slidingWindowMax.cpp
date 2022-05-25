@@ -1,49 +1,26 @@
 #include <iostream>
 #include <vector>
-#include <set>
-#include <queue>
+#include <map>
 using namespace std;
 
-vector<int> slidingMax1(vector<int> &nums, int k) {
-    vector<int> ans;
-    multiset<int, greater<int>> s(nums.begin(), nums.begin() + k);
-    for (int i = 0; i < nums.size() - k + 1; i++) {
-        ans.push_back(*s.begin());
-        s.erase(nums[i]);
-        s.insert(nums[i + k]);
-    }
-    return ans;
-}
-
-vector<int> slidingMax(vector<int> &nums, int k) {
-    vector<int> ans;
-    deque<int> q;
-    for (int i = 0; i < k; i++) {
-        while(!q.empty() && nums[i] >= nums[q.back()]) {
-            q.pop_back();
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        int index = 0, n = nums.size();
+        map<int, int, greater<int>> mp;
+        
+        for (int i = 0; i < k; i++) {
+            mp[nums[i]]++;
         }
-        q.push_back(i);
-    }
+        vector<int> ans;
+        ans.push_back(mp.begin()->first);
 
-    ans.push_back(nums[q.front()]);
-
-    for (int i = k; i < nums.size(); i++) {
-        cout << nums[q.front()] << " ";
-        while(!q.empty() && q.front() <= i - k) {
-            q.pop_front();
+        for (int i = k; i < n; i++) {
+            mp[nums[i]]++;
+            mp[nums[i - k]]--;
+            if (mp[nums[i - k]] == 0) mp.erase(nums[i - k]);
+            ans.push_back(mp.begin()->first);
         }
-        while(!q.empty() && nums[i] >= nums[q.back()]) {
-            q.pop_back();
-        }
-        q.push_back(i);
-        ans.push_back(nums[q.front()]);
+        return ans;
     }
-    return ans;
-}
-
-int main(int argc, char const *argv[]) {
-    vector<int> a = {1, 3, -1, -3, 5, 3, 6, 7};
-    vector<int> ans = slidingMax(a, 3);
-    return 0;
-}
-
+};
