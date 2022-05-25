@@ -30,3 +30,12 @@ public:
         return atMost(nums, k) - atMost(nums, k - 1);
     }
 };
+
+int main(int argc, char const *argv[])
+{
+    Solution sol;
+    vector<int> nums = {1,2,1,2,3};
+    int k = 2;
+    cout << sol.subarraysWithKDistinct(nums, k);
+    return 0;
+}
